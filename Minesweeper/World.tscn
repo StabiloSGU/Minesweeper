@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://World.gd" type="Script" id=1]
+[ext_resource path="res://Assets/smile_alive.png" type="Texture" id=2]
+
+[node name="Minesweeper" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Info" type="Control" parent="."]
+margin_right = 512.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Info"]
+margin_right = 512.0
+margin_bottom = 64.0
+
+[node name="RestartButton" type="Button" parent="Info/Panel"]
+margin_left = 224.0
+margin_right = 288.0
+margin_bottom = 64.0
+icon = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="Info/Panel"]
+margin_left = 64.0
+margin_right = 88.0
+margin_bottom = 16.0
+rect_scale = Vector2( 4, 4 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MineCounter" type="Label" parent="Info/Panel"]
+margin_left = 352.0
+margin_right = 376.0
+margin_bottom = 16.0
+rect_scale = Vector2( 4, 4 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="Field" type="Control" parent="."]
+margin_top = 64.0
+margin_right = 512.0
+margin_bottom = 576.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Field"]
+margin_right = 512.0
+margin_bottom = 512.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="Info/Panel/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
